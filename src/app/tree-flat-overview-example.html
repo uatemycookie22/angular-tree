@@ -1,0 +1,34 @@
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" opened class="mat-sidenav">
+    <mat-tree
+      [dataSource]="dataSource"
+      [treeControl]="treeControl"
+      class="tree-container"
+    >
+      <!-- This is the tree node template for leaf nodes -->
+      <mat-tree-node *matTreeNodeDef="let node" class="leaf-node">
+        <button mat-button class="leaf-button">
+          <mat-icon>description</mat-icon>
+          <div>{{node.name}}</div>
+        </button>
+      </mat-tree-node>
+      <!-- This is the tree node template for expandable nodes -->
+      <mat-tree-node
+        *matTreeNodeDef="let node;when: hasChild"
+        class="expand-node"
+      >
+        <button matTreeNodeToggle mat-button class="expand-button">
+          <mat-icon class="expand-icon">
+            {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+          </mat-icon>
+          <div>{{node.name}}</div>
+        </button>
+      </mat-tree-node>
+    </mat-tree>
+  </mat-drawer>
+  <mat-drawer-content>Main content</mat-drawer-content>
+</mat-drawer-container>
+
+<!-- Copyright 2022 Google LLC. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at https://angular.io/license -->

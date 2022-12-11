@@ -1,0 +1,53 @@
+@mixin node-button {
+  color: inherit;
+  width: 100%;
+  font: inherit;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+
+  div {
+    text-align: start;
+  }
+}
+
+.example-container {
+  width: inherit;
+  height: 90vh;
+  margin: 10px;
+
+  .mat-sidenav {
+    background-color: rgb(80, 90, 130);
+    width: 180px;
+
+    .tree-container {
+      background-color: rgba(0, 0, 0, 0);
+
+      .mat-tree-node {
+        color: rgba(255, 255, 255, 0.9);
+        min-height: fit-content;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .leaf-node {
+        .leaf-button {
+          padding-left: 15px;
+          @include node-button();
+        }
+      }
+
+      .expand-node {
+        .expand-button {
+          padding-left: 10px;
+          @include node-button();
+        }
+  
+        .expand-icon {
+          width: 20px;
+        }
+      }
+    }
+  }
+}
